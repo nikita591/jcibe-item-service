@@ -1,0 +1,12 @@
+//var require('./databaseConnectionMappix.js');
+
+
+module.exports = {
+	MAPICS_PARTAZURE_QUERY: function () {
+		return "SELECT item.VNDNR, item.ITNBR, item.ITDSC, item.ITTYP, item.ITCLS , itemAs.PURPR from AMFLIBL.ITEMASA AS item INNER JOIN AMFLIBL.ITEMASC itemAs ON itemAs.ITNBR = item.ITNBR INNER JOIN MSSTQACEYK.MXAPGI004 ON MSSTQACEYK.MXAPGI004.ITNBR = item.ITNBR where MSSTQACEYK.MXAPGI004.PRCSD = 'N' FETCH FIRST 300 ROWS ONLY";
+	},
+       MAPICS_POAZURE_QUERY: function() {
+  		return "SELECT poMast.ORDNO, poMast.ACTDT, poMast.PSTTS, poMast.PRITY, poMast.VNDNR, poMast.BUYNO, poMast.VALIN, poMast.BILID, poMast.SCAC, poItem.ITCLS, poItem.ITNBR, poItem.LINSQ, poItem.STAIC, poItem.ITDSC, poItem.VCLNB, poItem.CURPR, poItem.PCURI, poItem.ACTPR, poItem.PURUM, poItem.LICR, poComt.CMNT1, poComt.CMNT2, venNam.VNAME, venNam.VADD1, venNam.VADD2, venNam.VCITY, venNam.VSTAC, venNam.VCNTR, venNam.VZIPC, venNam.EADR AS EADR, venNam.TRMDS, puRact.RQNO, puRact.ACTS, puRact.ACCD, puRact.OQTY, puRact.ODAT, sHpmst.SHIP1, sHpmst.SHIP2, sHpmst.SCITY, sHpmst.SCNTR, sHpmst.SSTAC, sHpmst.SHPZP, buyErf.EADR AS BUYEADR, buyErf.BUYPH, buyErf.BUYNM from AMFLIBL.POMAST AS poMast INNER JOIN AMFLIBL.POITEM AS poItem ON poItem.ORDNO = poMast.ORDNO AND poItem.ACTDT = poMast.ACTDT INNER JOIN AMFLIBL.POCOMT AS poComt ON poComt.ORDNO = poMast.ORDNO AND poComt.ITNBR = poItem.ITNBR INNER JOIN AMFLIBL.VENNAM AS venNam ON venNam.VNDNR = poMast.VNDNR AND venNam.TRMDS = poMast.TRMDS INNER JOIN AMFLIBL.PURACT AS puRact ON puRact.ORDR  = poMast.ORDNO AND puRact.ITNO  = poItem.ITNBR INNER JOIN AMFLIBL.SHPMST AS sHpmst ON sHpmst.SHPID = poMast.SHPID AND sHpmst.HOUSE = poMast.HOUSE AND sHpmst.SHIP1 = poMast.SHIP1 AND sHpmst.SHIP2 = poMast.SHIP2 AND sHpmst.SCITY = poMast.SCITY INNER JOIN AMFLIBL.BUYERF AS buyErf ON buyErf.BUYNO = poMast.BUYNO INNER JOIN MSSTQACEYK.MXAPGI001 ON MSSTQACEYK.MXAPGI001.ORDNO = poMast.ORDNO AND MSSTQACEYK.MXAPGI001.ORDNO = poItem.ORDNO where MSSTQACEYK.MXAPGI001.PRCSD = 'N' FETCH FIRST 300  ROWS ONLY";
+       }
+};
+

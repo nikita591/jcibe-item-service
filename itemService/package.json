@@ -1,0 +1,16 @@
+{
+  "name": "data-management-service",
+  "version": "1.0.0",
+  "description": "a database managment applicaction",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Shashank dahake",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "jdbc": "^0.5.1",
+    "jt400": "^0.1.2"
+  }
+}
